@@ -31,12 +31,18 @@ class Snils implements ValidatorInterface
             return false;
         }
 
-        $control = (int) \substr($this->snils, -2);
+        return (int) \substr($this->snils, -2) === $this->checksum();
+    }
 
+    /**
+     * @return int
+     */
+    protected function checksum(): int
+    {
         $checkSum = 0;
 
         for ($i = 0; $i < 9; $i++) {
-            $checkSum += $this->snils[$i] * (9 - $i);
+            $checkSum += ($this->snils[$i] ?? 0) * (9 - $i);
         }
 
         if ($checkSum === 100 || $checkSum === 101) {
@@ -44,9 +50,9 @@ class Snils implements ValidatorInterface
         }
 
         if ($checkSum > 101) {
-            $checkSum %= 101;
+            return $checkSum % 101;
         }
 
-        return $checkSum === $control;
+        return $checkSum;
     }
 }

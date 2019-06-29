@@ -42,15 +42,23 @@ abstract class AbstractAccount implements ValidatorInterface
             return false;
         }
 
+        return $this->checksum() === 0;
+    }
+
+    /**
+     * @return int
+     */
+    protected function checksum(): int
+    {
         $str = $this->getPrefix() . $this->account;
 
         $checkSum = 0;
 
         foreach ($this->weights as $k => $i) {
-            $checkSum += $i * $str[$k] % 10;
+            $checkSum += $i * ($str[$k] ?? 0) % 10;
         }
 
-        return $checkSum % 10 === 0;
+        return $checkSum % 10;
     }
 
     /**
