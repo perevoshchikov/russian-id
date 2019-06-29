@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Kpp;
+use Anper\RussianId\Kpp;
 use PHPUnit\Framework\TestCase;
 
 class KppTest extends TestCase

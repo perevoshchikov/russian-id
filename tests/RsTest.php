@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Rs;
+use Anper\RussianId\Rs;
 use PHPUnit\Framework\TestCase;
 
 class RsTest extends TestCase

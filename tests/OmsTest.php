@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Oms;
+use Anper\RussianId\Oms;
 use PHPUnit\Framework\TestCase;
 
 class OmsTest extends TestCase

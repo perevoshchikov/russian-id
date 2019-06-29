@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Ogrn;
+use Anper\RussianId\Ogrn;
 use PHPUnit\Framework\TestCase;
 
 class OgrnTest extends TestCase

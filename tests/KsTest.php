@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Ks;
+use Anper\RussianId\Ks;
 use PHPUnit\Framework\TestCase;
 
 class KsTest extends TestCase

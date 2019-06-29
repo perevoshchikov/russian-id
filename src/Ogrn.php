@@ -1,6 +1,6 @@
 <?php
 
-namespace Anper\IdValidation;
+namespace Anper\RussianId;
 
 /**
  * Валидирует ОГРН и ОГРИП.

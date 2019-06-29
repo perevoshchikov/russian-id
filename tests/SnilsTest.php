@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Snils;
+use Anper\RussianId\Snils;
 use PHPUnit\Framework\TestCase;
 
 class SnilsTest extends TestCase

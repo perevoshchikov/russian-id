@@ -1,8 +1,8 @@
 <?php
 
-namespace Anper\IdValidation\Tests;
+namespace Anper\RussianId\Tests;
 
-use Anper\IdValidation\Validator;
+use Anper\RussianId\Validator;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
