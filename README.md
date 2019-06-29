@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-coverage]][link-coverage]
 
-Простой валидатор для российских идентификаторов физических и юридических лиц. Проверяет только checksum.
+Простой валидатор для идентификаторов российских физических и юридических лиц. Проверяет только checksum.
 
 
 ## Supports
