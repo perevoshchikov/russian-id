@@ -2,7 +2,7 @@
 
 namespace Anper\IdValidation;
 
-abstract class AbstractAccount implements ValidatorInterface
+abstract class AbstractAccount implements ValidationInterface
 {
     /**
      * @var array

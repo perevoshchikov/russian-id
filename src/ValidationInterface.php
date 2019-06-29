@@ -2,7 +2,7 @@
 
 namespace Anper\IdValidation;
 
-interface ValidatorInterface
+interface ValidationInterface
 {
     /**
      * @return bool

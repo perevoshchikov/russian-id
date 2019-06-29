@@ -7,7 +7,7 @@ namespace Anper\IdValidation;
  *
  * @see http://www.consultant.ru/cons/cgi/online.cgi?req=doc&base=LAW&n=204797&dst=113673
  */
-class Oms implements ValidatorInterface
+class Oms implements ValidationInterface
 {
     /**
      * @var string

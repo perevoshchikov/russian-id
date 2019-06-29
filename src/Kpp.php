@@ -7,7 +7,7 @@ namespace Anper\IdValidation;
  *
  * @see http://www.consultant.ru/cons/cgi/online.cgi?req=doc&base=LAW&n=134082&dst=1000000001#012933603811932848
  */
-class Kpp implements ValidatorInterface
+class Kpp implements ValidationInterface
 {
     /**
      * @var string
