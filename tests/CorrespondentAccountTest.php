@@ -44,4 +44,18 @@ class CorrespondentAccountTest extends TestCase
 
         $this->assertFalse($ca->validate());
     }
+
+    public function testKsNotDigit()
+    {
+        $ca = new CorrespondentAccount(static::BIK, 'abc');
+
+        $this->assertFalse($ca->validate());
+    }
+
+    public function testBikNotDigit()
+    {
+        $ca = new CorrespondentAccount('abc', static::ACCOUNT);
+
+        $this->assertFalse($ca->validate());
+    }
 }
