@@ -47,14 +47,14 @@ class CheckingAccountTest extends TestCase
 
     public function testRsNotDigit()
     {
-        $ca = new CheckingAccount(static::BIK, 'abc');
+        $ca = new CheckingAccount(static::BIK, 'abcabcab1');
 
         $this->assertFalse($ca->validate());
     }
 
     public function testBikNotDigit()
     {
-        $ca = new CheckingAccount('abc', static::ACCOUNT);
+        $ca = new CheckingAccount('abcabcabcabcabcabca1', static::ACCOUNT);
 
         $this->assertFalse($ca->validate());
     }

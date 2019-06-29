@@ -47,7 +47,7 @@ class InnTest extends TestCase
 
     public function testInnNotDigit()
     {
-        $inn = new Inn('abc');
+        $inn = new Inn('abcabcabcab1');
 
         $this->assertFalse($inn->validate());
     }
