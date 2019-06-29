@@ -47,20 +47,19 @@ class Inn implements ValidatorInterface
         }
 
         if (\strlen($this->inn) === 10) {
-            return $this->verify($this->inn[9], $this->weights10);
+            return (int) $this->inn[9] === $this->checksum($this->weights10);
         }
 
-        return $this->verify($this->inn[10], $this->weights12_1)
-            && $this->verify($this->inn[11], $this->weights12_2);
+        return (int) $this->inn[10] === $this->checksum($this->weights12_1)
+            && (int) $this->inn[11] === $this->checksum($this->weights12_2);
     }
 
     /**
-     * @param int $toCheck
      * @param array $weights
      *
-     * @return bool
+     * @return int
      */
-    protected function verify(int $toCheck, array $weights): bool
+    protected function checksum(array $weights): int
     {
         $checkSum = 0;
 
@@ -68,6 +67,6 @@ class Inn implements ValidatorInterface
             $checkSum += $i * ($this->inn[$k] ?? 0);
         }
 
-        return ($checkSum % 11) % 10 === $toCheck;
+        return ($checkSum % 11) % 10;
     }
 }
