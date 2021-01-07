@@ -39,11 +39,11 @@ class Oms implements ValidationInterface
      */
     protected function checksum(): int
     {
-        for ($a = '', $i = 14; $i >= 0; $i-=2) {
+        for ($a = '', $i = 14; $i >= 0; $i -= 2) {
             $a .= ($this->oms[$i] ?? 0);
         }
 
-        for ($b = '', $i = 13; $i >= 0; $i-=2) {
+        for ($b = '', $i = 13; $i >= 0; $i -= 2) {
             $b .= ($this->oms[$i] ?? 0);
         }
 

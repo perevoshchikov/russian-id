@@ -14,6 +14,6 @@ class Ks extends AbstractAccount
      */
     protected function getPrefix(): string
     {
-        return '0' .$this->bik[4] .$this->bik[5];
+        return '0' . $this->bik[4] . $this->bik[5];
     }
 }
