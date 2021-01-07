@@ -5,7 +5,7 @@ namespace Anper\RussianId;
 abstract class AbstractAccount implements ValidationInterface
 {
     /**
-     * @var array
+     * @var array<int,int>
      */
     protected $weights = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
@@ -50,12 +50,13 @@ abstract class AbstractAccount implements ValidationInterface
      */
     protected function checksum(): int
     {
+        /** @var string $str */
         $str = $this->getPrefix() . $this->account;
 
         $checkSum = 0;
 
         foreach ($this->weights as $k => $i) {
-            $checkSum += $i * ($str[$k] ?? 0) % 10;
+            $checkSum += $i * (int) ($str[$k] ?? 0) % 10;
         }
 
         return $checkSum % 10;

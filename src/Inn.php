@@ -10,17 +10,17 @@ namespace Anper\RussianId;
 class Inn implements ValidationInterface
 {
     /**
-     * @var array
+     * @var array<int,int>
      */
     protected $weights10 = [2, 4, 10, 3, 5, 9, 4, 6, 8];
 
     /**
-     * @var array
+     * @var array<int,int>
      */
     protected $weights12_1 = [7 ,2, 4, 10, 3, 5, 9, 4, 6, 8];
 
     /**
-     * @var array
+     * @var array<int,int>
      */
     protected $weights12_2 = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
 
@@ -55,7 +55,7 @@ class Inn implements ValidationInterface
     }
 
     /**
-     * @param array $weights
+     * @param array<int,int> $weights
      *
      * @return int
      */
@@ -64,7 +64,7 @@ class Inn implements ValidationInterface
         $checkSum = 0;
 
         foreach ($weights as $k => $i) {
-            $checkSum += $i * ($this->inn[$k] ?? 0);
+            $checkSum += $i * (int) ($this->inn[$k] ?? 0);
         }
 
         return ($checkSum % 11) % 10;

@@ -27,6 +27,6 @@ class Kpp implements ValidationInterface
      */
     public function validate(): bool
     {
-        return \preg_match('/^\d{4}[\dA-Z]{2}\d{3}$/', $this->kpp);
+        return (bool) \preg_match('/^\d{4}[\dA-Z]{2}\d{3}$/', $this->kpp);
     }
 }

@@ -47,7 +47,7 @@ class Oms implements ValidationInterface
             $b .= ($this->oms[$i] ?? 0);
         }
 
-        $c = $b . ($a*2);
+        $c = $b . (2 * (int) $a);
 
         $sum = $max = \array_reduce(\str_split($c), function ($carry, $item) {
             return $carry + $item;

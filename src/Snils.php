@@ -42,7 +42,7 @@ class Snils implements ValidationInterface
         $checkSum = 0;
 
         for ($i = 0; $i < 9; $i++) {
-            $checkSum += ($this->snils[$i] ?? 0) * (9 - $i);
+            $checkSum += (int) ($this->snils[$i] ?? 0) * (9 - $i);
         }
 
         if ($checkSum === 100 || $checkSum === 101) {
