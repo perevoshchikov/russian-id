@@ -2,9 +2,9 @@
 
 namespace Anper\RussianId;
 
-abstract class AbstractOgrn
+trait OgrnChecksumTrait
 {
-    protected function checksum(string $ogrn, int $div): int
+    private function checksum(string $ogrn, int $div): int
     {
         $checkSum = \mb_substr($ogrn, 0, $div + 1) % $div;
 
