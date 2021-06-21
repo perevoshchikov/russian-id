@@ -39,6 +39,11 @@ class Validator
         return (new Ogrn())->__invoke($ogrn);
     }
 
+    public static function isOgrnip(string $ogrn): bool
+    {
+        return (new Ogrnip())->__invoke($ogrn);
+    }
+
     public static function isOms(string $oms): bool
     {
         return (new Oms())->__invoke($oms);

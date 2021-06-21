@@ -82,6 +82,11 @@ class ValidatorTest extends TestCase
         $this->assertFalse(Validator::isOgrn('1138218667110'));
     }
 
+    public function testInvalidOgrnip()
+    {
+        $this->assertFalse(Validator::isOgrn('315850060115169'));
+    }
+
     public function testValidOms()
     {
         $this->assertTrue(Validator::isOms('2341998071655749'));

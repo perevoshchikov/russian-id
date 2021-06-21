@@ -22,7 +22,6 @@ abstract class AbstractAccount
         return $this->checksum($bik, $account) === 0;
     }
 
-
     protected function checksum(string $bik, string $account): int
     {
         $str = $this->getPrefix($bik, $account) . $account;
