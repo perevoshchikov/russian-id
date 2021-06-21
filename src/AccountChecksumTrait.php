@@ -2,7 +2,7 @@
 
 namespace Anper\RussianId;
 
-abstract class AbstractAccount
+trait AccountChecksumTrait
 {
     /**
      * @var array<int,int>
@@ -11,15 +11,9 @@ abstract class AbstractAccount
 
     public function __invoke(string $bik, string $account): bool
     {
-        if (!\preg_match('/^\d{9}$/', $bik)) {
-            return false;
-        }
-
-        if (!\preg_match('/^\d{20}$/', $account)) {
-            return false;
-        }
-
-        return $this->checksum($bik, $account) === 0;
+        return \preg_match('/^\d{9}$/', $bik)
+            && \preg_match('/^\d{20}$/', $account)
+            && $this->checksum($bik, $account) === 0;
     }
 
     protected function checksum(string $bik, string $account): int
