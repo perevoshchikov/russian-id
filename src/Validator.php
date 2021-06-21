@@ -4,75 +4,48 @@ namespace Anper\RussianId;
 
 class Validator
 {
-    /**
-     * @param string $bik
-     * @param string $rs
-     *
-     * @return bool
-     */
     public static function isRs(string $bik, string $rs): bool
     {
-        return (new Rs($bik, $rs))->validate();
+        return (new Rs())->__invoke($bik, $rs);
     }
 
-    /**
-     * @param string $bik
-     * @param string $ks
-     *
-     * @return bool
-     */
     public static function isKs(string $bik, string $ks): bool
     {
-        return (new Ks($bik, $ks))->validate();
+        return (new Ks())->__invoke($bik, $ks);
     }
 
-    /**
-     * @param string $inn
-     *
-     * @return bool
-     */
     public static function isInn(string $inn): bool
     {
-        return (new Inn($inn))->validate();
+        return (new Inn())->__invoke($inn);
     }
 
-    /**
-     * @param string $kpp
-     *
-     * @return bool
-     */
+    public static function isLegalInn(string $inn): bool
+    {
+        return (new LegalInn())->__invoke($inn);
+    }
+
+    public static function isPersonInn(string $inn): bool
+    {
+        return (new PersonInn())->__invoke($inn);
+    }
+
     public static function isKpp(string $kpp): bool
     {
-        return (new Kpp($kpp))->validate();
+        return (new Kpp())->__invoke($kpp);
     }
 
-    /**
-     * @param string $ogrn
-     *
-     * @return bool
-     */
     public static function isOgrn(string $ogrn): bool
     {
-        return (new Ogrn($ogrn))->validate();
+        return (new Ogrn())->__invoke($ogrn);
     }
 
-    /**
-     * @param string $oms
-     *
-     * @return bool
-     */
     public static function isOms(string $oms): bool
     {
-        return (new Oms($oms))->validate();
+        return (new Oms())->__invoke($oms);
     }
 
-    /**
-     * @param string $snils
-     *
-     * @return bool
-     */
     public static function isSnils(string $snils): bool
     {
-        return (new Snils($snils))->validate();
+        return (new Snils())->__invoke($snils);
     }
 }

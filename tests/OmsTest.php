@@ -9,29 +9,21 @@ class OmsTest extends TestCase
 {
     public function testValid()
     {
-        $oms = new Oms('2341998071655749');
-
-        $this->assertTrue($oms->validate());
+        $this->assertTrue((new Oms())->__invoke('2341998071655749'));
     }
 
     public function testInvalidLenth()
     {
-        $oms = new Oms('123');
-
-        $this->assertFalse($oms->validate());
+        $this->assertFalse((new Oms())->__invoke('123'));
     }
 
     public function testNotDigit()
     {
-        $oms = new Oms('234199807165574a');
-
-        $this->assertFalse($oms->validate());
+        $this->assertFalse((new Oms())->__invoke('234199807165574a'));
     }
 
     public function testInvalid()
     {
-        $oms = new Oms('2341998071655740');
-
-        $this->assertFalse($oms->validate());
+        $this->assertFalse((new Oms())->__invoke('2341998071655740'));
     }
 }

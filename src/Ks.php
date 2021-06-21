@@ -9,11 +9,8 @@ namespace Anper\RussianId;
  */
 class Ks extends AbstractAccount
 {
-    /**
-     * @inheritDoc
-     */
-    protected function getPrefix(): string
+    protected function getPrefix(string $bik, string $account): string
     {
-        return '0' . $this->bik[4] . $this->bik[5];
+        return '0' . $bik[4] . $bik[5];
     }
 }

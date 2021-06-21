@@ -23,15 +23,11 @@ class KppTest extends TestCase
      */
     public function testValid(string $value)
     {
-        $kpp = new Kpp($value);
-
-        $this->assertTrue($kpp->validate());
+        $this->assertTrue((new Kpp())->__invoke($value));
     }
 
     public function testInvalidKpp()
     {
-        $kpp = new Kpp('123abc');
-
-        $this->assertFalse($kpp->validate());
+        $this->assertFalse((new Kpp())->__invoke('123abc'));
     }
 }

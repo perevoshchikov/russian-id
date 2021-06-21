@@ -7,49 +7,30 @@ namespace Anper\RussianId;
  *
  * @see http://www.consultant.ru/cons/cgi/online.cgi?req=doc&base=LAW&n=204797&dst=113673
  */
-class Oms implements ValidationInterface
+class Oms
 {
-    /**
-     * @var string
-     */
-    protected $oms;
-
-    /**
-     * @param string $oms
-     */
-    public function __construct(string $oms)
+    public function __invoke(string $oms): bool
     {
-        $this->oms = $oms;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function validate(): bool
-    {
-        if (!\preg_match('/^\d{16}$/', $this->oms)) {
+        if (!\preg_match('/^\d{16}$/', $oms)) {
             return false;
         }
 
-        return (int) $this->oms[15] === $this->checksum();
+        return (int) $oms[15] === $this->checksum($oms);
     }
 
-    /**
-     * @return int
-     */
-    protected function checksum(): int
+    protected function checksum(string $oms): int
     {
         for ($a = '', $i = 14; $i >= 0; $i -= 2) {
-            $a .= ($this->oms[$i] ?? 0);
+            $a .= ($oms[$i] ?? 0);
         }
 
         for ($b = '', $i = 13; $i >= 0; $i -= 2) {
-            $b .= ($this->oms[$i] ?? 0);
+            $b .= ($oms[$i] ?? 0);
         }
 
         $c = $b . (2 * (int) $a);
 
-        $sum = $max = \array_reduce(\str_split($c), function ($carry, $item) {
+        $sum = $max = \array_reduce(\mb_str_split($c), function ($carry, $item) {
             return $carry + $item;
         }, 0);
 

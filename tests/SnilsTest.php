@@ -24,29 +24,21 @@ class SnilsTest extends TestCase
      */
     public function testValid(string $snils)
     {
-        $snils = new Snils($snils);
-
-        $this->assertTrue($snils->validate());
+        $this->assertTrue((new Snils())->__invoke($snils));
     }
 
     public function testInvalidInn()
     {
-        $snils = new Snils('11223344590');
-
-        $this->assertFalse($snils->validate());
+        $this->assertFalse((new Snils())->__invoke('11223344590'));
     }
 
     public function testInvalidLength()
     {
-        $snils = new Snils('0');
-
-        $this->assertFalse($snils->validate());
+        $this->assertFalse((new Snils())->__invoke('0'));
     }
 
     public function testNotDigit()
     {
-        $snils = new Snils('abcabcabca1');
-
-        $this->assertFalse($snils->validate());
+        $this->assertFalse((new Snils())->__invoke('abcabcabca1'));
     }
 }

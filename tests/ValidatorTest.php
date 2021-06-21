@@ -7,14 +7,39 @@ use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
-    public function testValidInn()
+    public function testValidInnAsPerson()
     {
         $this->assertTrue(Validator::isInn('500100732259'));
     }
 
+    public function testValidInnAsLegal()
+    {
+        $this->assertTrue(Validator::isInn('7830002293'));
+    }
+
+    public function testValidPerosnInn()
+    {
+        $this->assertTrue(Validator::isPersonInn('500100732259'));
+    }
+
+    public function testValidLegalInn()
+    {
+        $this->assertTrue(Validator::isLegalInn('7830002293'));
+    }
+
     public function testInvalidInn()
     {
-        $this->assertFalse(Validator::isInn('500100732250'));
+        $this->assertFalse(Validator::isInn('7830002291'));
+    }
+
+    public function testInvalidPersonInn()
+    {
+        $this->assertFalse(Validator::isPersonInn('500100732250'));
+    }
+
+    public function testInvalidLegalInn()
+    {
+        $this->assertFalse(Validator::isLegalInn('500100732250'));
     }
 
     public function testValidKpp()

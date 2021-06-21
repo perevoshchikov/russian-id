@@ -30,6 +30,8 @@ use Anper\RussianId\Validator;
 Validator::isRs($bik, $rs);
 Validator::isKs($bik, $ks);
 Validator::isInn($inn);
+Validator::isPersonInn($inn);
+Validator::isLegalInn($inn);
 Validator::isKpp($kpp);
 Validator::isOgrn($ogrn);
 Validator::isOms($oms);

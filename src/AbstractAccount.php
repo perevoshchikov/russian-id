@@ -2,56 +2,30 @@
 
 namespace Anper\RussianId;
 
-abstract class AbstractAccount implements ValidationInterface
+abstract class AbstractAccount
 {
     /**
      * @var array<int,int>
      */
     protected $weights = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
-    /**
-     * @var string
-     */
-    protected $bik;
-
-    /**
-     * @var string
-     */
-    protected $account;
-
-    /**
-     * @param string $bik
-     * @param string $account
-     */
-    public function __construct(string $bik, string $account)
+    public function __invoke(string $bik, string $account): bool
     {
-        $this->bik = $bik;
-        $this->account = $account;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function validate(): bool
-    {
-        if (!\preg_match('/^\d{9}$/', $this->bik)) {
+        if (!\preg_match('/^\d{9}$/', $bik)) {
             return false;
         }
 
-        if (!\preg_match('/^\d{20}$/', $this->account)) {
+        if (!\preg_match('/^\d{20}$/', $account)) {
             return false;
         }
 
-        return $this->checksum() === 0;
+        return $this->checksum($bik, $account) === 0;
     }
 
-    /**
-     * @return int
-     */
-    protected function checksum(): int
+
+    protected function checksum(string $bik, string $account): int
     {
-        /** @var string $str */
-        $str = $this->getPrefix() . $this->account;
+        $str = $this->getPrefix($bik, $account) . $account;
 
         $checkSum = 0;
 
@@ -62,8 +36,5 @@ abstract class AbstractAccount implements ValidationInterface
         return $checkSum % 10;
     }
 
-    /**
-     * @return string
-     */
-    abstract protected function getPrefix(): string;
+    abstract protected function getPrefix(string $bik, string $account): string;
 }

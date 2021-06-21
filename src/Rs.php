@@ -12,8 +12,8 @@ class Rs extends AbstractAccount
     /**
      * @inheritDoc
      */
-    protected function getPrefix(): string
+    protected function getPrefix(string $bik, string $account): string
     {
-        return \substr($this->bik, -3);
+        return \mb_substr($bik, -3);
     }
 }

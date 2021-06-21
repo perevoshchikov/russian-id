@@ -10,45 +10,33 @@ class InnTest extends TestCase
     public const INN_12 = '500100732259';
     public const INN_10 = '7830002293';
 
-    public function testValidInn12()
+    public function testValidPersonInn()
     {
-        $inn = new Inn(static::INN_12);
-
-        $this->assertTrue($inn->validate());
+        $this->assertTrue((new Inn())->__invoke(static::INN_12));
     }
 
-    public function testValidInn10()
+    public function testValidLegalInn()
     {
-        $inn = new Inn(static::INN_10);
-
-        $this->assertTrue($inn->validate());
+        $this->assertTrue((new Inn())->__invoke(static::INN_10));
     }
 
-    public function testInvalidInn12()
+    public function testInvalidPersonInn()
     {
-        $inn = new Inn('123456789000');
-
-        $this->assertFalse($inn->validate());
+        $this->assertFalse((new Inn())->__invoke('123456789000'));
     }
 
-    public function testInvalidInn10()
+    public function testInvalidLegalInn()
     {
-        $inn = new Inn('1234567890');
-
-        $this->assertFalse($inn->validate());
+        $this->assertFalse((new Inn())->__invoke('1234567890'));
     }
 
     public function testInvalidInnLength()
     {
-        $inn = new Inn('0');
-
-        $this->assertFalse($inn->validate());
+        $this->assertFalse((new Inn())->__invoke('0'));
     }
 
     public function testInnNotDigit()
     {
-        $inn = new Inn('abcabcabcab1');
-
-        $this->assertFalse($inn->validate());
+        $this->assertFalse((new Inn())->__invoke('abcabcabcab1'));
     }
 }

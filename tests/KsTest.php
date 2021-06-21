@@ -12,50 +12,40 @@ class KsTest extends TestCase
 
     public function testValid()
     {
-        $ks = new Ks(static::BIK, static::ACCOUNT);
-
-        $this->assertTrue($ks->validate());
+        $this->assertTrue((new Ks())->__invoke(static::BIK, static::ACCOUNT));
     }
 
     public function testInvalidBik()
     {
-        $ks = new Ks(\implode('', \array_fill(0, 9, '0')), static::ACCOUNT);
+        $bik = \implode('', \array_fill(0, 9, '0'));
 
-        $this->assertFalse($ks->validate());
+        $this->assertFalse((new Ks())->__invoke($bik, static::ACCOUNT));
     }
 
     public function testInvalidKs()
     {
-        $ks = new Ks(static::BIK, \implode('', \array_fill(0, 20, '0')));
+        $account = \implode('', \array_fill(0, 20, '0'));
 
-        $this->assertFalse($ks->validate());
+        $this->assertFalse((new Ks())->__invoke(static::BIK, $account));
     }
 
     public function testInvalidBikLength()
     {
-        $ks = new Ks('0', static::ACCOUNT);
-
-        $this->assertFalse($ks->validate());
+        $this->assertFalse((new Ks())->__invoke('0', static::ACCOUNT));
     }
 
     public function testInvalidKsLength()
     {
-        $ks = new Ks(static::BIK, '0');
-
-        $this->assertFalse($ks->validate());
+        $this->assertFalse((new Ks())->__invoke(static::BIK, '0'));
     }
 
     public function testKsNotDigit()
     {
-        $ks = new Ks(static::BIK, 'abcqbcab1');
-
-        $this->assertFalse($ks->validate());
+        $this->assertFalse((new Ks())->__invoke(static::BIK, 'abcqbcab1'));
     }
 
     public function testBikNotDigit()
     {
-        $ks = new Ks('abcabcabcabcabcabca1', static::ACCOUNT);
-
-        $this->assertFalse($ks->validate());
+        $this->assertFalse((new Ks())->__invoke('abcabcabcabcabcabca1', static::ACCOUNT));
     }
 }

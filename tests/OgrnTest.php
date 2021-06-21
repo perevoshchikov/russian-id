@@ -23,36 +23,26 @@ class OgrnTest extends TestCase
      */
     public function testValid(string $value)
     {
-        $ogrn = new Ogrn($value);
-
-        $this->assertTrue($ogrn->validate());
+        $this->assertTrue((new Ogrn())->__invoke($value));
     }
 
     public function testValidLength()
     {
-        $ogrn = new Ogrn('0');
-
-        $this->assertFalse($ogrn->validate());
+        $this->assertFalse((new Ogrn())->__invoke('0'));
     }
 
     public function testValidOgrn()
     {
-        $ogrn = new Ogrn('1151232294621');
-
-        $this->assertFalse($ogrn->validate());
+        $this->assertFalse((new Ogrn())->__invoke('1151232294621'));
     }
 
     public function testValidOgrnip()
     {
-        $ogrn = new Ogrn('315850060115160');
-
-        $this->assertFalse($ogrn->validate());
+        $this->assertFalse((new Ogrn())->__invoke('315850060115160'));
     }
 
     public function testNotDigit()
     {
-        $ogrn = new Ogrn('abcabcabcabc1');
-
-        $this->assertFalse($ogrn->validate());
+        $this->assertFalse((new Ogrn())->__invoke('abcabcabcabc1'));
     }
 }
