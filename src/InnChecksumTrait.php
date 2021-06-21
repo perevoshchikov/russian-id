@@ -2,14 +2,15 @@
 
 namespace Anper\RussianId;
 
-abstract class AbstractInn
+trait InnChecksumTrait
 {
     /**
+     * @param string $inn
      * @param array<int,int> $weights
      *
      * @return int
      */
-    protected function checksum(string $inn, array $weights): int
+    private function checksum(string $inn, array $weights): int
     {
         $checkSum = 0;
 
