@@ -16,7 +16,7 @@ class Validator
 
     public static function isInn(string $inn): bool
     {
-        return (new Inn())->__invoke($inn);
+        return static::isPersonInn($inn) || static::isLegalInn($inn);
     }
 
     public static function isLegalInn(string $inn): bool
