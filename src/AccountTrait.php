@@ -2,7 +2,7 @@
 
 namespace Anper\RussianId;
 
-trait AccountChecksumTrait
+trait AccountTrait
 {
     /**
      * @var array<int,int>

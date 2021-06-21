@@ -9,7 +9,7 @@ namespace Anper\RussianId;
  */
 class Ks
 {
-    use AccountChecksumTrait;
+    use AccountTrait;
 
     protected function getPrefix(string $bik, string $account): string
     {
