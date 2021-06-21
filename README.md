@@ -50,8 +50,9 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/anper/russian-id.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/anper/russian-id.svg
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg
+[ico-ga]: https://github.com/perevoshchikov/russian-id/actions/workflows/tests.yml/badge.svg
 
 [link-packagist]: https://packagist.org/packages/anper/russian-id
-[link-ga]: https://github.com/perevoshchikov/russian-id/actions
+[link-ga]: https://github.com/perevoshchikov/russian-id/actions/workflows/tests.yml
