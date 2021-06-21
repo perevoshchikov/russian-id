@@ -35,6 +35,7 @@ Validator::isLegalInn($inn);
 Validator::isKpp($kpp);
 Validator::isOgrn($ogrn);
 Validator::isOgrnip($ogrnip);
+Validator::isOgrnOrOgrnip($ogrnOrOgrnip);
 Validator::isOms($oms);
 Validator::isSnils($snils);
 ```
