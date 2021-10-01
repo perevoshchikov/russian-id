@@ -58,4 +58,9 @@ class Validator
     {
         return (new Snils())->__invoke($snils);
     }
+
+    public static function isBik(string $bik): bool
+    {
+        return (new Bik())->__invoke($bik);
+    }
 }

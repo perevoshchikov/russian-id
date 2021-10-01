@@ -8,6 +8,7 @@
 
 
 ## Supports
+* БИК
 * Расчётный счёт
 * Корреспондентский счёт
 * ИНН
@@ -27,6 +28,7 @@ $ composer require anper/russian-id
 ``` php
 use Anper\RussianId\Validator;
 
+Validator::isBik($bik);
 Validator::isRs($bik, $rs);
 Validator::isKs($bik, $ks);
 Validator::isInn($inn);

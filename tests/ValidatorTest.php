@@ -106,4 +106,14 @@ class ValidatorTest extends TestCase
     {
         $this->assertFalse(Validator::isSnils('11223344590'));
     }
+
+    public function testValidBik(): void
+    {
+        $this->assertTrue(Validator::isBik('044525225'));
+    }
+
+    public function testInvalidBik(): void
+    {
+        $this->assertFalse(Validator::isBik('04452522a'));
+    }
 }
