@@ -9,6 +9,11 @@ namespace Anper\RussianId;
  */
 final class Snils
 {
+    /**
+     * @param mixed $snils
+     *
+     * @return bool
+     */
     public function __invoke($snils): bool
     {
         if (\is_string($snils)) {
@@ -16,7 +21,7 @@ final class Snils
         }
 
         return \is_numeric($snils)
-            && \preg_match('/^\d{11}$/', $snils)
+            && \preg_match('/^\d{11}$/', $snils = (string) $snils)
             && (int) \mb_substr($snils, -2) === $this->checksum($snils);
     }
 

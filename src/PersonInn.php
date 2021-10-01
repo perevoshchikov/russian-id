@@ -21,10 +21,15 @@ final class PersonInn
      */
     private $weights12_2 = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
 
+    /**
+     * @param mixed $inn
+     *
+     * @return bool
+     */
     public function __invoke($inn): bool
     {
         return \is_numeric($inn)
-            && \preg_match('/^\d{12}$/', $inn)
+            && \preg_match('/^\d{12}$/', $inn = (string) $inn)
             && (int) $inn[10] === $this->checksum($inn, $this->weights12_1)
             && (int) $inn[11] === $this->checksum($inn, $this->weights12_2);
     }

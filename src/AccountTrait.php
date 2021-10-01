@@ -9,11 +9,17 @@ trait AccountTrait
      */
     private $weights = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
+    /**
+     * @param mixed $bik
+     * @param mixed $account
+     *
+     * @return bool
+     */
     public function __invoke($bik, $account): bool
     {
         return (new Bik())->__invoke($bik)
             && \is_numeric($account)
-            && \preg_match('/^\d{20}$/', $account)
+            && \preg_match('/^\d{20}$/', $account = (string) $account)
             && $this->checksum($bik, $account) === 0;
     }
 

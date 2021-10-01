@@ -11,9 +11,15 @@ final class Ogrnip
 {
     use OgrnChecksumTrait;
 
+    /**
+     * @param mixed $ogrn
+     *
+     * @return bool
+     */
     public function __invoke($ogrn): bool
     {
-        return \is_numeric($ogrn) && \preg_match('/^\d{15}$/', $ogrn)
+        return \is_numeric($ogrn)
+            && \preg_match('/^\d{15}$/', $ogrn = (string) $ogrn)
             && (int) $ogrn[14] === $this->checksum($ogrn, 13);
     }
 }

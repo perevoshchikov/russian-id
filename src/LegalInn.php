@@ -16,10 +16,15 @@ final class LegalInn
      */
     private $weights = [2, 4, 10, 3, 5, 9, 4, 6, 8];
 
+    /**
+     * @param mixed $inn
+     *
+     * @return bool
+     */
     public function __invoke($inn): bool
     {
         return \is_numeric($inn)
-            && \preg_match('/^\d{10}$/', $inn)
+            && \preg_match('/^\d{10}$/', $inn = (string) $inn)
             && (int) $inn[9] === $this->checksum($inn, $this->weights);
     }
 }

@@ -5,6 +5,9 @@ namespace Anper\RussianId;
 final class Assert
 {
     /**
+     * @param mixed $bik
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function bik($bik, string $message = null): void
@@ -13,6 +16,10 @@ final class Assert
     }
 
     /**
+     * @param mixed $bik
+     * @param mixed $rs
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function rs($bik, $rs, string $message = null): void
@@ -21,6 +28,10 @@ final class Assert
     }
 
     /**
+     * @param mixed $bik
+     * @param mixed $ks
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function ks($bik, $ks, string $message = null): void
@@ -29,6 +40,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $inn
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function inn($inn, string $message = null): void
@@ -37,6 +51,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $inn
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function legalInn($inn, string $message = null): void
@@ -45,6 +62,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $inn
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function personInn($inn, string $message = null): void
@@ -53,6 +73,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $kpp
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function kpp($kpp, string $message = null): void
@@ -61,6 +84,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $ogrn
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function ogrn($ogrn, string $message = null): void
@@ -69,6 +95,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $ogrnip
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function ogrnip($ogrnip, string $message = null): void
@@ -77,6 +106,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $ogrn
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function ogrnOrOgrnip($ogrn, string $message = null): void
@@ -85,6 +117,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $oms
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function oms($oms, string $message = null): void
@@ -93,6 +128,9 @@ final class Assert
     }
 
     /**
+     * @param mixed $snils
+     * @param string|null $message
+     *
      * @throws InvalidArgumentException
      */
     public static function snils($snils, string $message = null): void

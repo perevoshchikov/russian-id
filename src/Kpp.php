@@ -9,9 +9,14 @@ namespace Anper\RussianId;
  */
 final class Kpp
 {
+    /**
+     * @param mixed $kpp
+     *
+     * @return bool
+     */
     public function __invoke($kpp): bool
     {
         return (\is_string($kpp) || \is_numeric($kpp))
-            && \preg_match('/^\d{4}[\dA-Z]{2}\d{3}$/', $kpp);
+            && \preg_match('/^\d{4}[\dA-Z]{2}\d{3}$/', (string) $kpp);
     }
 }
