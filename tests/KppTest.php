@@ -21,12 +21,12 @@ class KppTest extends TestCase
      * @dataProvider kppProvider
      * @param string $value
      */
-    public function testValid(string $value)
+    public function testValid(string $value): void
     {
         $this->assertTrue((new Kpp())->__invoke($value));
     }
 
-    public function testInvalidKpp()
+    public function testInvalidKpp(): void
     {
         $this->assertFalse((new Kpp())->__invoke('123abc'));
     }

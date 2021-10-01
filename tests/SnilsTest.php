@@ -22,22 +22,22 @@ class SnilsTest extends TestCase
      * @dataProvider snilsProvider
      * @param string $snils
      */
-    public function testValid(string $snils)
+    public function testValid(string $snils): void
     {
         $this->assertTrue((new Snils())->__invoke($snils));
     }
 
-    public function testInvalidInn()
+    public function testInvalidInn(): void
     {
         $this->assertFalse((new Snils())->__invoke('11223344590'));
     }
 
-    public function testInvalidLength()
+    public function testInvalidLength(): void
     {
         $this->assertFalse((new Snils())->__invoke('0'));
     }
 
-    public function testNotDigit()
+    public function testNotDigit(): void
     {
         $this->assertFalse((new Snils())->__invoke('abcabcabca1'));
     }

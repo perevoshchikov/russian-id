@@ -19,22 +19,22 @@ class OgrnipTest extends TestCase
      * @dataProvider ogrnipProvider
      * @param string $value
      */
-    public function testValid(string $value)
+    public function testValid(string $value): void
     {
         $this->assertTrue((new Ogrnip())->__invoke($value));
     }
 
-    public function testInvalidLenth()
+    public function testInvalidLenth(): void
     {
         $this->assertFalse((new Ogrnip())->__invoke('0'));
     }
 
-    public function testInvalidOgrnip()
+    public function testInvalidOgrnip(): void
     {
         $this->assertFalse((new Ogrnip())->__invoke('315850060115160'));
     }
 
-    public function testNotDigit()
+    public function testNotDigit(): void
     {
         $this->assertFalse((new Ogrnip())->__invoke('abcabcabcabc1'));
     }

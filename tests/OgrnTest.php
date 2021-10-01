@@ -19,22 +19,22 @@ class OgrnTest extends TestCase
      * @dataProvider ogrnProvider
      * @param string $value
      */
-    public function testValid(string $value)
+    public function testValid(string $value): void
     {
         $this->assertTrue((new Ogrn())->__invoke($value));
     }
 
-    public function testivalidLength()
+    public function testivalidLength(): void
     {
         $this->assertFalse((new Ogrn())->__invoke('0'));
     }
 
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $this->assertFalse((new Ogrn())->__invoke('1151232294621'));
     }
 
-    public function testNotDigit()
+    public function testNotDigit(): void
     {
         $this->assertFalse((new Ogrn())->__invoke('abcabcabcabc1'));
     }
