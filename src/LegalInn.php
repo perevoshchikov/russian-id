@@ -16,9 +16,10 @@ final class LegalInn
      */
     private $weights = [2, 4, 10, 3, 5, 9, 4, 6, 8];
 
-    public function __invoke(string $inn): bool
+    public function __invoke($inn): bool
     {
-        return \preg_match('/^\d{10}$/', $inn)
+        return \is_numeric($inn)
+            && \preg_match('/^\d{10}$/', $inn)
             && (int) $inn[9] === $this->checksum($inn, $this->weights);
     }
 }

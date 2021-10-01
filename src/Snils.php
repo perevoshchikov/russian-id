@@ -9,15 +9,15 @@ namespace Anper\RussianId;
  */
 final class Snils
 {
-    public function __invoke(string $snils): bool
+    public function __invoke($snils): bool
     {
-        $snils = \preg_replace('/[^0-9]/', '', $snils);
-
-        if (!\preg_match('/^\d{11}$/', $snils)) {
-            return false;
+        if (\is_string($snils)) {
+            $snils = \preg_replace('/[^0-9]/', '', $snils);
         }
 
-        return (int) \mb_substr($snils, -2) === $this->checksum($snils);
+        return \is_numeric($snils)
+            && \preg_match('/^\d{11}$/', $snils)
+            && (int) \mb_substr($snils, -2) === $this->checksum($snils);
     }
 
     private function checksum(string $snils): int

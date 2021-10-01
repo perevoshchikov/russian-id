@@ -9,8 +9,9 @@ namespace Anper\RussianId;
  */
 final class Kpp
 {
-    public function __invoke(string $kpp): bool
+    public function __invoke($kpp): bool
     {
-        return (bool) \preg_match('/^\d{4}[\dA-Z]{2}\d{3}$/', $kpp);
+        return (\is_string($kpp) || \is_numeric($kpp))
+            && \preg_match('/^\d{4}[\dA-Z]{2}\d{3}$/', $kpp);
     }
 }

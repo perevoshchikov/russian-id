@@ -9,13 +9,10 @@ namespace Anper\RussianId;
  */
 final class Oms
 {
-    public function __invoke(string $oms): bool
+    public function __invoke($oms): bool
     {
-        if (!\preg_match('/^\d{16}$/', $oms)) {
-            return false;
-        }
-
-        return (int) $oms[15] === $this->checksum($oms);
+        return \is_numeric($oms) && \preg_match('/^\d{16}$/', $oms)
+            && (int) $oms[15] === $this->checksum($oms);
     }
 
     private function checksum(string $oms): int

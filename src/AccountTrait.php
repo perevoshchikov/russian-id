@@ -9,9 +9,10 @@ trait AccountTrait
      */
     private $weights = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
-    public function __invoke(string $bik, string $account): bool
+    public function __invoke($bik, $account): bool
     {
         return (new Bik())->__invoke($bik)
+            && \is_numeric($account)
             && \preg_match('/^\d{20}$/', $account)
             && $this->checksum($bik, $account) === 0;
     }

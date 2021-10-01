@@ -11,9 +11,10 @@ final class Ogrn
 {
     use OgrnChecksumTrait;
 
-    public function __invoke(string $ogrn): bool
+    public function __invoke($ogrn): bool
     {
-        return \preg_match('/^\d{13}$/', $ogrn)
+        return \is_numeric($ogrn)
+            && \preg_match('/^\d{13}$/', $ogrn)
             && (int) $ogrn[12] === $this->checksum($ogrn, 11);
     }
 }
