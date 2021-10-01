@@ -11,7 +11,7 @@ trait AccountTrait
 
     public function __invoke(string $bik, string $account): bool
     {
-        return \preg_match('/^\d{9}$/', $bik)
+        return (new Bik())->__invoke($bik)
             && \preg_match('/^\d{20}$/', $account)
             && $this->checksum($bik, $account) === 0;
     }
