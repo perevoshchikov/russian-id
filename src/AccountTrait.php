@@ -7,7 +7,7 @@ trait AccountTrait
     /**
      * @var array<int,int>
      */
-    protected $weights = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
+    private $weights = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
     public function __invoke(string $bik, string $account): bool
     {
@@ -16,7 +16,7 @@ trait AccountTrait
             && $this->checksum($bik, $account) === 0;
     }
 
-    protected function checksum(string $bik, string $account): int
+    private function checksum(string $bik, string $account): int
     {
         $str = $this->getPrefix($bik, $account) . $account;
 

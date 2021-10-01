@@ -2,7 +2,7 @@
 
 namespace Anper\RussianId;
 
-class Bik
+final class Bik
 {
     public function __invoke(string $bik): bool
     {

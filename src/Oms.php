@@ -7,7 +7,7 @@ namespace Anper\RussianId;
  *
  * @see http://www.consultant.ru/cons/cgi/online.cgi?req=doc&base=LAW&n=204797&dst=113673
  */
-class Oms
+final class Oms
 {
     public function __invoke(string $oms): bool
     {
@@ -18,7 +18,7 @@ class Oms
         return (int) $oms[15] === $this->checksum($oms);
     }
 
-    protected function checksum(string $oms): int
+    private function checksum(string $oms): int
     {
         for ($a = '', $i = 14; $i >= 0; $i -= 2) {
             $a .= ($oms[$i] ?? 0);

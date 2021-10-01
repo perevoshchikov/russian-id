@@ -2,7 +2,7 @@
 
 namespace Anper\RussianId;
 
-class Validator
+final class Validator
 {
     public static function isRs(string $bik, string $rs): bool
     {

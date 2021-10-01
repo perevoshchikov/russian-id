@@ -7,7 +7,7 @@ namespace Anper\RussianId;
  *
  * @see http://www.consultant.ru/cons/cgi/online.cgi?req=doc;base=LAW;n=16053;fld=134;dst=4294967295#013609377551161095
  */
-class Ks
+final class Ks
 {
     use AccountTrait;
 
