@@ -7,97 +7,97 @@ final class Assert
     /**
      * @throws InvalidArgumentException
      */
-    public static function bik($bik): void
+    public static function bik($bik, string $message = null): void
     {
-        self::throwUnless(Validator::isBik($bik), 'Bik is invalid');
+        self::throwUnless(Validator::isBik($bik), $message ?? 'Bik is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function rs($bik, $rs): void
+    public static function rs($bik, $rs, string $message = null): void
     {
-        self::throwUnless(Validator::isRs($bik, $rs), 'Rs is invalid');
+        self::throwUnless(Validator::isRs($bik, $rs), $message ?? 'Rs is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function ks($bik, $ks): void
+    public static function ks($bik, $ks, string $message = null): void
     {
-        self::throwUnless(Validator::isKs($bik, $ks), 'Ks is invalid');
+        self::throwUnless(Validator::isKs($bik, $ks), $message ?? 'Ks is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function inn($inn): void
+    public static function inn($inn, string $message = null): void
     {
-        self::throwUnless(Validator::isInn($inn), 'Inn is invalid');
+        self::throwUnless(Validator::isInn($inn), $message ?? 'Inn is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function legalInn($inn): void
+    public static function legalInn($inn, string $message = null): void
     {
-        self::throwUnless(Validator::isLegalInn($inn), 'Inn is invalid');
+        self::throwUnless(Validator::isLegalInn($inn), $message ?? 'Inn is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function personInn($inn): void
+    public static function personInn($inn, string $message = null): void
     {
-        self::throwUnless(Validator::isPersonInn($inn), 'Inn is invalid');
+        self::throwUnless(Validator::isPersonInn($inn), $message ?? 'Inn is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function kpp($kpp): void
+    public static function kpp($kpp, string $message = null): void
     {
-        self::throwUnless(Validator::isKpp($kpp), 'Kpp is invalid');
+        self::throwUnless(Validator::isKpp($kpp), $message ?? 'Kpp is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function ogrn($ogrn): void
+    public static function ogrn($ogrn, string $message = null): void
     {
-        self::throwUnless(Validator::isOgrn($ogrn), 'Ogrn is invalid');
+        self::throwUnless(Validator::isOgrn($ogrn), $message ?? 'Ogrn is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function ogrnip($ogrnip): void
+    public static function ogrnip($ogrnip, string $message = null): void
     {
-        self::throwUnless(Validator::isOgrnip($ogrnip), 'Ogrnip is invalid');
+        self::throwUnless(Validator::isOgrnip($ogrnip), $message ?? 'Ogrnip is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function ogrnOrOgrnip($ogrn): void
+    public static function ogrnOrOgrnip($ogrn, string $message = null): void
     {
-        self::throwUnless(Validator::isOgrnOrOgrnip($ogrn), 'Ogrn is invalid');
+        self::throwUnless(Validator::isOgrnOrOgrnip($ogrn), $message ?? 'Ogrn is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function oms($oms): void
+    public static function oms($oms, string $message = null): void
     {
-        self::throwUnless(Validator::isOms($oms), 'Oms is invalid');
+        self::throwUnless(Validator::isOms($oms), $message ?? 'Oms is invalid');
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    public static function snils($snils): void
+    public static function snils($snils, string $message = null): void
     {
-        self::throwUnless(Validator::isSnils($snils), 'Snils is invalid');
+        self::throwUnless(Validator::isSnils($snils), $message ?? 'Snils is invalid');
     }
 
     /**
