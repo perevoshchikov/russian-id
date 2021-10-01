@@ -8,44 +8,42 @@ use PHPUnit\Framework\TestCase;
 class KsTest extends TestCase
 {
     public const BIK = '044030653';
-    public const ACCOUNT = '30101810500000000653';
+    public const KS = '30101810500000000653';
 
-    public function testValid(): void
+    public function validKsProvider(): array
     {
-        $this->assertTrue((new Ks())->__invoke(static::BIK, static::ACCOUNT));
+        return [
+            [static::BIK, static::KS],
+        ];
     }
 
-    public function testInvalidBik(): void
+    public function invalidKsProvider(): array
     {
-        $bik = \implode('', \array_fill(0, 9, '0'));
-
-        $this->assertFalse((new Ks())->__invoke($bik, static::ACCOUNT));
+        return [
+            ['0', static::KS],
+            [static::BIK, '30101810500000000650'],
+            [static::BIK, '0'],
+            [static::BIK, 1],
+            [static::BIK, 1.1],
+            [static::BIK, []],
+            [static::BIK, null],
+            [static::BIK, new \DateTime()],
+        ];
     }
 
-    public function testInvalidKs(): void
+    /**
+     * @dataProvider validKsProvider
+     */
+    public function testValid($bik, $ks): void
     {
-        $account = \implode('', \array_fill(0, 20, '0'));
-
-        $this->assertFalse((new Ks())->__invoke(static::BIK, $account));
+        $this->assertTrue((new Ks())->__invoke($bik, $ks));
     }
 
-    public function testInvalidBikLength(): void
+    /**
+     * @dataProvider invalidKsProvider
+     */
+    public function testInvalid($bik, $ks): void
     {
-        $this->assertFalse((new Ks())->__invoke('0', static::ACCOUNT));
-    }
-
-    public function testInvalidKsLength(): void
-    {
-        $this->assertFalse((new Ks())->__invoke(static::BIK, '0'));
-    }
-
-    public function testKsNotDigit(): void
-    {
-        $this->assertFalse((new Ks())->__invoke(static::BIK, 'abcqbcab1'));
-    }
-
-    public function testBikNotDigit(): void
-    {
-        $this->assertFalse((new Ks())->__invoke('abcabcabcabcabcabca1', static::ACCOUNT));
+        $this->assertFalse((new Ks())->__invoke($bik, $ks));
     }
 }

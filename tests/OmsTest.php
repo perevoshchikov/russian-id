@@ -7,23 +7,30 @@ use PHPUnit\Framework\TestCase;
 
 class OmsTest extends TestCase
 {
+    public function invalidOmsProvider(): array
+    {
+        return [
+            ['2341998071655740'],
+            ['123'],
+            ['123abc'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
+        ];
+    }
+
     public function testValid(): void
     {
         $this->assertTrue((new Oms())->__invoke('2341998071655749'));
     }
 
-    public function testInvalidLenth(): void
+    /**
+     * @dataProvider invalidOmsProvider
+     */
+    public function testInvalid($value): void
     {
-        $this->assertFalse((new Oms())->__invoke('123'));
-    }
-
-    public function testNotDigit(): void
-    {
-        $this->assertFalse((new Oms())->__invoke('234199807165574a'));
-    }
-
-    public function testInvalid(): void
-    {
-        $this->assertFalse((new Oms())->__invoke('2341998071655740'));
+        $this->assertFalse((new Oms())->__invoke($value));
     }
 }

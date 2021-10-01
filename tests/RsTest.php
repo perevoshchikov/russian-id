@@ -8,44 +8,42 @@ use PHPUnit\Framework\TestCase;
 class RsTest extends TestCase
 {
     public const BIK = '044030653';
-    public const ACCOUNT = '40702810955230165464';
+    public const RS = '40702810955230165464';
 
-    public function testValid(): void
+    public function validRsProvider(): array
     {
-        $this->assertTrue((new Rs())->__invoke(static::BIK, static::ACCOUNT));
+        return [
+            [static::BIK, static::RS],
+        ];
     }
 
-    public function testInvalidBik(): void
+    public function invalidRsProvider(): array
     {
-        $bik = \implode('', \array_fill(0, 9, '0'));
-
-        $this->assertFalse((new Rs())->__invoke($bik, static::ACCOUNT));
+        return [
+            ['0', static::RS],
+            [static::BIK, '40702810955230165460'],
+            [static::BIK, '0'],
+            [static::BIK, 1],
+            [static::BIK, 1.1],
+            [static::BIK, []],
+            [static::BIK, null],
+            [static::BIK, new \DateTime()],
+        ];
     }
 
-    public function testInvalidRs(): void
+    /**
+     * @dataProvider validRsProvider
+     */
+    public function testValid($bik, $rs): void
     {
-        $account = \implode('', \array_fill(0, 20, '0'));
-
-        $this->assertFalse((new Rs())->__invoke(static::BIK, $account));
+        $this->assertTrue((new Rs())->__invoke($bik, $rs));
     }
 
-    public function testInvalidBikLength(): void
+    /**
+     * @dataProvider invalidRsProvider
+     */
+    public function testInvalid($bik, $rs): void
     {
-        $this->assertFalse((new Rs())->__invoke('0', static::ACCOUNT));
-    }
-
-    public function testInvalidRsLength(): void
-    {
-        $this->assertFalse((new Rs())->__invoke(static::BIK, '0'));
-    }
-
-    public function testRsNotDigit(): void
-    {
-        $this->assertFalse((new Rs())->__invoke(static::BIK, 'abcabcab1'));
-    }
-
-    public function testBikNotDigit(): void
-    {
-        $this->assertFalse((new Rs())->__invoke('abcabcabcabcabcabca1', static::ACCOUNT));
+        $this->assertFalse((new Rs())->__invoke($bik, $rs));
     }
 }

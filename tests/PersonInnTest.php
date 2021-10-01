@@ -7,23 +7,31 @@ use PHPUnit\Framework\TestCase;
 
 class PersonInnTest extends TestCase
 {
-    public function testValidInn(): void
+    public function invalidInnProvider(): array
+    {
+        return [
+            ['500100732250'],
+            ['123456789000'],
+            ['0'],
+            ['123abc'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
+        ];
+    }
+
+    public function testValid(): void
     {
         $this->assertTrue((new PersonInn())->__invoke('500100732259'));
     }
 
-    public function testInvalidInn(): void
+    /**
+     * @dataProvider invalidInnProvider
+     */
+    public function testInvalid($value): void
     {
-        $this->assertFalse((new PersonInn())->__invoke('123456789000'));
-    }
-
-    public function testInvalidInnLength(): void
-    {
-        $this->assertFalse((new PersonInn())->__invoke('0'));
-    }
-
-    public function testInnNotDigit(): void
-    {
-        $this->assertFalse((new PersonInn())->__invoke('abcabcabcab1'));
+        $this->assertFalse((new PersonInn())->__invoke($value));
     }
 }

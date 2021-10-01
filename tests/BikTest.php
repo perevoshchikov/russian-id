@@ -13,20 +13,36 @@ class BikTest extends TestCase
             ['04452522a'],
             ['04452522'],
             ['0445252255'],
+            ['0'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
+        ];
+    }
+
+    public function validKppProvider(): array
+    {
+        return [
+            ['044525225'],
+            [144525225],
         ];
     }
 
     /**
      * @dataProvider invalidKppProvider
-     * @param string $value
      */
-    public function testInvalid(string $value): void
+    public function testInvalid($value): void
     {
         $this->assertFalse((new Bik())->__invoke($value));
     }
 
-    public function testValidKpp(): void
+    /**
+     * @dataProvider validKppProvider
+     */
+    public function testValidKpp($value): void
     {
-        $this->assertTrue((new Bik())->__invoke('044525225'));
+        $this->assertTrue((new Bik())->__invoke($value));
     }
 }

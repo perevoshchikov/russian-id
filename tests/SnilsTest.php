@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SnilsTest extends TestCase
 {
-    public function snilsProvider(): array
+    public function validSnilsProvider(): array
     {
         return [
             ['112-233-445 95'], // with separators
@@ -18,27 +18,33 @@ class SnilsTest extends TestCase
         ];
     }
 
+    public function invalidSnilsProvider(): array
+    {
+        return [
+            ['11223344590'],
+            ['0'],
+            ['abcabcabca1'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
+        ];
+    }
+
     /**
-     * @dataProvider snilsProvider
-     * @param string $snils
+     * @dataProvider validSnilsProvider
      */
-    public function testValid(string $snils): void
+    public function testValid($snils): void
     {
         $this->assertTrue((new Snils())->__invoke($snils));
     }
 
-    public function testInvalidInn(): void
+    /**
+     * @dataProvider invalidSnilsProvider
+     */
+    public function testInvalid($snils): void
     {
-        $this->assertFalse((new Snils())->__invoke('11223344590'));
-    }
-
-    public function testInvalidLength(): void
-    {
-        $this->assertFalse((new Snils())->__invoke('0'));
-    }
-
-    public function testNotDigit(): void
-    {
-        $this->assertFalse((new Snils())->__invoke('abcabcabca1'));
+        $this->assertFalse((new Snils())->__invoke($snils));
     }
 }

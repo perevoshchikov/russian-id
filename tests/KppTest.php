@@ -7,27 +7,40 @@ use PHPUnit\Framework\TestCase;
 
 class KppTest extends TestCase
 {
-    public function kppProvider(): array
+    public function validKppProvider(): array
     {
         return [
             ['514944513'],
+            [114944513],
             ['0108A4934'],
-            ['68314A288'],
-            ['3963AZ668'],
+        ];
+    }
+
+    public function invalidKppProvider(): array
+    {
+        return [
+            ['123abc'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
         ];
     }
 
     /**
-     * @dataProvider kppProvider
-     * @param string $value
+     * @dataProvider validKppProvider
      */
-    public function testValid(string $value): void
+    public function testValid($value): void
     {
         $this->assertTrue((new Kpp())->__invoke($value));
     }
 
-    public function testInvalidKpp(): void
+    /**
+     * @dataProvider invalidKppProvider
+     */
+    public function testInvalidKpp($value): void
     {
-        $this->assertFalse((new Kpp())->__invoke('123abc'));
+        $this->assertFalse((new Kpp())->__invoke($value));
     }
 }

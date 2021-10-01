@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class OgrnipTest extends TestCase
 {
-    public function ogrnipProvider(): array
+    public function validOgrnipProvider(): array
     {
         return [
             ['315850060115169'], // orgnip
@@ -15,27 +15,34 @@ class OgrnipTest extends TestCase
         ];
     }
 
+    public function invalidOgrnipProvider(): array
+    {
+        return [
+            ['315850060115160'],
+            ['314833285032520'],
+            ['31483328503252a'],
+            ['123abc'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
+        ];
+    }
+
     /**
-     * @dataProvider ogrnipProvider
-     * @param string $value
+     * @dataProvider validOgrnipProvider
      */
-    public function testValid(string $value): void
+    public function testValid($value): void
     {
         $this->assertTrue((new Ogrnip())->__invoke($value));
     }
 
-    public function testInvalidLenth(): void
+    /**
+     * @dataProvider invalidOgrnipProvider
+     */
+    public function testInvalid($value): void
     {
-        $this->assertFalse((new Ogrnip())->__invoke('0'));
-    }
-
-    public function testInvalidOgrnip(): void
-    {
-        $this->assertFalse((new Ogrnip())->__invoke('315850060115160'));
-    }
-
-    public function testNotDigit(): void
-    {
-        $this->assertFalse((new Ogrnip())->__invoke('abcabcabcabc1'));
+        $this->assertFalse((new Ogrnip())->__invoke($value));
     }
 }

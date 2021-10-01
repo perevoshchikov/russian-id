@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class OgrnTest extends TestCase
 {
-    public function ogrnProvider(): array
+    public function validOgrnProvider(): array
     {
         return [
             ['1151232294620'],   // orgn
@@ -15,27 +15,34 @@ class OgrnTest extends TestCase
         ];
     }
 
+    public function invalidOgrnipProvider(): array
+    {
+        return [
+            ['1151232294621'],
+            ['1138218667110'],
+            ['113821866711a'],
+            ['123abc'],
+            [1],
+            [[]],
+            [null],
+            [1.0],
+            [new \DateTime()],
+        ];
+    }
+
     /**
-     * @dataProvider ogrnProvider
-     * @param string $value
+     * @dataProvider validOgrnProvider
      */
     public function testValid(string $value): void
     {
         $this->assertTrue((new Ogrn())->__invoke($value));
     }
 
-    public function testivalidLength(): void
+    /**
+     * @dataProvider invalidOgrnipProvider
+     */
+    public function testInvalid($value): void
     {
-        $this->assertFalse((new Ogrn())->__invoke('0'));
-    }
-
-    public function testInvalid(): void
-    {
-        $this->assertFalse((new Ogrn())->__invoke('1151232294621'));
-    }
-
-    public function testNotDigit(): void
-    {
-        $this->assertFalse((new Ogrn())->__invoke('abcabcabcabc1'));
+        $this->assertFalse((new Ogrn())->__invoke($value));
     }
 }
