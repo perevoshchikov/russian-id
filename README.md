@@ -42,6 +42,30 @@ Validator::isOms($oms);
 Validator::isSnils($snils);
 ```
 
+## Assertion
+
+``` php
+use Anper\RussianId\Assert;
+use Anper\RussianId\InvalidArgumentException;
+
+try {
+    Assert::bik($bik);
+    Assert::rs($bik, $rs);
+    Assert::ks($bik, $ks);
+    Assert::inn($inn);
+    Assert::personInn($inn);
+    Assert::legalInn($inn);
+    Assert::kpp($kpp);
+    Assert::ogrn($ogrn);
+    Assert::ogrnip($ogrnip);
+    Assert::ogrnOrOgrnip($ogrnOrOgrnip);
+    Assert::oms($oms);
+    Assert::snils($snils);
+} catch (InvalidArgumentException $e) {
+    // invalid
+}
+```
+
 ## Test
 
 ``` bash
